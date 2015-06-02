@@ -1,0 +1,22 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: source package graf32
+dpkg-buildpackage: source version 1.0-1
+dpkg-buildpackage: source distribution UNRELEASED
+dpkg-buildpackage: source changed by bilsch01 <bilsch01@gmail.com>
+ dpkg-source --before-build graf32-1.0
+dpkg-buildpackage: host architecture i386
+ fakeroot debian/rules clean
+dh clean
+ dpkg-source -b graf32-1.0
+dpkg-source: info: using source format `3.0 (quilt)'
+dpkg-source: info: building graf32 using existing ./graf32_1.0.orig.tar.gz
+dpkg-source: info: building graf32 in graf32_1.0-1.debian.tar.gz
+dpkg-source: info: building graf32 in graf32_1.0-1.dsc
+ debian/rules build
+dh build
+ fakeroot debian/rules binary
+dh binary
+ dpkg-genchanges  >../graf32_1.0-1_i386.changes
+dpkg-genchanges: including full source code in upload
+dpkg-genchanges: error: cannot fstat file ../graf32_1.0-1_i386.deb: No such file or directory
+dpkg-buildpackage: error: dpkg-genchanges gave error exit status 2
